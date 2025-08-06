@@ -1,8 +1,7 @@
 module.exports = {
-  widgetName: "jsDev",
+  widgetName: "competencies",
   server: "$",
-  file: "jsDev",
+  file: "CK_Contact",
   uploadScript: "UploadToHTML",
   reloadScript: "Load Widget",
-  startDevScript: "Set to Dev Mode",
 };
