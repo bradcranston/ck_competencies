@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Notes Modal</title>
+    <link href="https://unpkg.com/tabulator-tables@6.2.5/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            width: 500px;
+            max-width: 90%;
+        }
+
+        .modal-header {
+            background-color: #006690;
+            color: #fff;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            opacity: 0.7;
+        }
+
+        .note-textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        .modal-buttons {
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .modal-buttons button {
+            margin-left: 10px;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 3px;
+            border: 1px solid #0091CE;
+            background-color: #0091CE;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .cancel-btn {
+            background-color: #ccc;
+            border-color: #ccc;
+            color: #333;
+        }
+
+        .group-footer-buttons {
+            padding: 5px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .group-footer-buttons button {
+            font-size: 12px;
+            padding: 4px 8px;
+            margin: 2px;
+            border-radius: 3px;
+            border: 1px solid #0091CE;
+            background-color: #0091CE;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .test-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notes Modal Test</h1>
+    
+    <div class="test-section">
+        <h2>Test the Modal Functionality</h2>
+        <p>Click the buttons below to test the Add Note and View Notes functionality:</p>
+        
+        <div class="group-footer-buttons">
+            <button onclick="openNotesModal('Technical Skills', 'John Doe', 'contact_1', 'add')">
+                Add Note (John Doe)
+            </button>
+            <button onclick="openNotesModal('Technical Skills', 'John Doe', 'contact_1', 'view')">
+                View Notes (John Doe)
+            </button>
+            <button onclick="openNotesModal('Technical Skills', 'Jane Smith', 'contact_2', 'add')">
+                Add Note (Jane Smith)
+            </button>
+            <button onclick="openNotesModal('Technical Skills', 'Jane Smith', 'contact_2', 'view')">
+                View Notes (Jane Smith)
+            </button>
+        </div>
+    </div>
+
+    <div id="example-table"></div>
+    
+    <!-- Sample Table with Group Footer -->
+    <div class="test-section">
+        <h2>Sample Grouped Data</h2>
+        <div id="sample-table"></div>
+    </div>
+
+    <!-- Modal for Add/View Notes -->
+    <div id="notesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Add Note</h2>
+            </div>
+            <textarea id="noteTextarea" class="note-textarea" placeholder="Enter your note here..."></textarea>
+            <div class="modal-buttons">
+                <button class="cancel-btn" onclick="closeNotesModal()">Cancel</button>
+                <button id="saveNoteBtn" onclick="saveNote()">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables for modal state
+        let currentGroupName = '';
+        let currentContactName = '';
+        let currentContactId = '';
+        let currentMode = '';
+
+        // Modal functions
+        function openNotesModal(groupName, contactName, contactId, mode) {
+            currentGroupName = groupName;
+            currentContactName = contactName;
+            currentContactId = contactId;
+            currentMode = mode;
+            
+            const modal = document.getElementById('notesModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const noteTextarea = document.getElementById('noteTextarea');
+            const saveBtn = document.getElementById('saveNoteBtn');
+            
+            if (mode === 'add') {
+                modalTitle.textContent = `Add Note - ${groupName} / ${contactName}`;
+                noteTextarea.value = '';
+                noteTextarea.readOnly = false;
+                saveBtn.style.display = 'inline-block';
+                saveBtn.textContent = 'Save Note';
+            } else {
+                modalTitle.textContent = `View Notes - ${groupName} / ${contactName}`;
+                noteTextarea.value = 'Sample existing note for ' + contactName + ' in ' + groupName + '.\n\nThis would be loaded from your FileMaker database.';
+                noteTextarea.readOnly = true;
+                saveBtn.style.display = 'none';
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeNotesModal() {
+            const modal = document.getElementById('notesModal');
+            modal.style.display = 'none';
+        }
+
+        function saveNote() {
+            const noteText = document.getElementById('noteTextarea').value;
+            
+            if (noteText.trim() === '') {
+                alert('Please enter a note before saving.');
+                return;
+            }
+            
+            const result = {
+                "groupName": currentGroupName,
+                "contactId": currentContactId,
+                "contactName": currentContactName,
+                "noteText": noteText,
+                "mode": 'saveNote'
+            };
+            
+            console.log('Saving note:', result);
+            alert('Note saved! Check console for details.');
+            
+            closeNotesModal();
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('notesModal');
+            if (event.target === modal) {
+                closeNotesModal();
+            }
+        };
+
+        // Close modal when clicking the X
+        document.addEventListener('DOMContentLoaded', function() {
+            const closeBtn = document.querySelector('.close');
+            if (closeBtn) {
+                closeBtn.onclick = closeNotesModal;
+            }
+            
+            // Create a sample table with group footer
+            createSampleTable();
+        });
+
+        function createSampleTable() {
+            const sampleData = [
+                {Skill: "JavaScript", Area: "Technical Skills", contact_1: "2", contact_2: "3"},
+                {Skill: "HTML/CSS", Area: "Technical Skills", contact_1: "3", contact_2: "2"},
+                {Skill: "Communication", Area: "Soft Skills", contact_1: "2", contact_2: "3"},
+                {Skill: "Leadership", Area: "Soft Skills", contact_1: "1", contact_2: "2"}
+            ];
+
+            new Tabulator("#sample-table", {
+                data: sampleData,
+                layout: "fitColumns",
+                groupBy: "Area",
+                height: "300",
+                columns: [
+                    {title: "Skill", field: "Skill", width: 300},
+                    {title: "John Doe", field: "contact_1", hozAlign: "center"},
+                    {title: "Jane Smith", field: "contact_2", hozAlign: "center"}
+                ],
+                groupHeader: function(value, count) {
+                    return value + " (" + count + " skills)";
+                },
+                groupFooter: function(value) {
+                    return `
+                        <div class="group-footer-buttons">
+                            <button onclick="openNotesModal('${value}', 'John Doe', 'contact_1', 'add')">
+                                Add Note (John Doe)
+                            </button>
+                            <button onclick="openNotesModal('${value}', 'John Doe', 'contact_1', 'view')">
+                                View Notes (John Doe)
+                            </button>
+                            <button onclick="openNotesModal('${value}', 'Jane Smith', 'contact_2', 'add')">
+                                Add Note (Jane Smith)
+                            </button>
+                            <button onclick="openNotesModal('${value}', 'Jane Smith', 'contact_2', 'view')">
+                                View Notes (Jane Smith)
+                            </button>
+                        </div>
+                    `;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
