@@ -1,3 +1,9 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -6,8 +12,11 @@ body {
   line-height: 1;
   color: #000;
   background-color: #fff;
-  margin: 10;
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
 }
 
 p{
@@ -42,6 +51,17 @@ button {
   border: 1px solid #0091CE;
   background-color: #0091CE;
   color: #fff;
+}
+
+/* Footer button styles */
+.manual-group-footer button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.manual-group-footer button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 /* Modal styles */

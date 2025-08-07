@@ -8,8 +8,8 @@ window.scoreData = scoreData;
 
 const tabledata = createTabulatorData(JSON.parse(skillData), JSON.parse(contactData), JSON.parse(scoreData))
 
-// First, let's try without groupFooter to see if the issue is specific to that
-const table = new Tabulator("#example-table", {
+// Create the table and store it globally
+window.table = new Tabulator("#example-table", {
   data:tabledata.data, //assign data to table
  // autoColumns:true, //create columns from data field names
   layout:"fitColumns",
@@ -35,6 +35,18 @@ const table = new Tabulator("#example-table", {
       addManualGroupFooters();
     }, 300);
   },
+  // Add more event listeners to catch when Tabulator manipulates the DOM
+  rowsLoaded: function(){
+    setTimeout(() => {
+      addManualGroupFooters();
+    }, 200);
+  },
+  scrollVertical: function(top){
+    // Tabulator's built-in scroll event - more reliable than DOM scroll events
+    setTimeout(() => {
+      addManualGroupFooters();
+    }, 100);
+  },
   layoutColumnsOnNewData: true
 });
 
@@ -42,6 +54,21 @@ const table = new Tabulator("#example-table", {
 setTimeout(() => {
   addManualGroupFooters();
 }, 1500);
+
+// Add a periodic check as a fallback mechanism
+setInterval(() => {
+  // Only check if we have the required data and the table exists
+  if (window.skillData && window.contactData && window.scoreData) {
+    const groupElements = document.querySelectorAll('#example-table .tabulator-group');
+    const existingFooters = document.querySelectorAll('.manual-group-footer');
+    
+    // If we have groups but missing footers, re-add them
+    if (groupElements.length > 0 && existingFooters.length < groupElements.length) {
+      console.log('Periodic check detected missing footers, re-adding...');
+      addManualGroupFooters();
+    }
+  }
+}, 3000); // Check every 3 seconds
 
 // Add window resize listener to handle webviewer resizing (debounced)
 let resizeTimeout = null;
@@ -55,6 +82,51 @@ window.addEventListener('resize', function() {
   }, 500);
 });
 
+// Add scroll listener to handle footer visibility issues during scrolling
+let scrollTimeout = null;
+function checkAndRestoreFooters() {
+  // Check if footers are missing and re-add them
+  const groupElements = document.querySelectorAll('#example-table .tabulator-group');
+  const existingFooters = document.querySelectorAll('.manual-group-footer');
+  if (groupElements.length > 0 && existingFooters.length < groupElements.length) {
+    console.log('Scroll detected missing footers, re-adding...');
+    addManualGroupFooters();
+  }
+}
+
+window.addEventListener('scroll', function() {
+  if (scrollTimeout) {
+    clearTimeout(scrollTimeout);
+  }
+  scrollTimeout = setTimeout(() => {
+    scrollTimeout = null;
+    checkAndRestoreFooters();
+  }, 150); // Faster response for scroll events
+}, { passive: true });
+
+// Also add scroll listener to the table container itself
+setTimeout(() => {
+  const tableContainer = document.querySelector('#example-table');
+  if (tableContainer) {
+    tableContainer.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(() => {
+        scrollTimeout = null;
+        checkAndRestoreFooters();
+      }, 150);
+    }, { passive: true });
+    
+    // Also listen for wheel events on the table for more immediate detection
+    tableContainer.addEventListener('wheel', function() {
+      setTimeout(() => {
+        checkAndRestoreFooters();
+      }, 50);
+    }, { passive: true });
+  }
+}, 1000);
+
 // Also listen for any mutations to the table that might remove our footers
 const tableObserver = new MutationObserver(function(mutations) {
   let shouldReaddFooters = false;
@@ -64,8 +136,17 @@ const tableObserver = new MutationObserver(function(mutations) {
       if (node.classList && node.classList.contains('manual-group-footer')) {
         // Only trigger if we don't currently have a pending timeout (to avoid infinite loops)
         if (!addFootersTimeout) {
+          console.log('MutationObserver detected footer removal');
           shouldReaddFooters = true;
         }
+      }
+    });
+    
+    // Also check if new group elements were added (indicating a re-render)
+    mutation.addedNodes.forEach(function(node) {
+      if (node.classList && node.classList.contains('tabulator-group')) {
+        console.log('MutationObserver detected new group element');
+        shouldReaddFooters = true;
       }
     });
   });
@@ -75,7 +156,7 @@ const tableObserver = new MutationObserver(function(mutations) {
     addFootersTimeout = setTimeout(() => {
       addFootersTimeout = null;
       addManualGroupFooters();
-    }, 500); // Increased delay to prevent rapid fire
+    }, 300); // Reduced delay for faster response
   }
 });
 
@@ -89,6 +170,17 @@ setTimeout(() => {
     });
   }
 }, 1000);
+
+// Register event handlers for the table
+window.table.on("cellEdited", function(cell){
+  // Triggered when a cell's value has been changed
+  const conId = cell.getField();
+  const skillId = cell.getData().id;
+  const value = cell.getValue();
+  const result = {"conId":conId,"skillId":skillId,"value":value,"mode":'updateScore'};
+
+  runScript(JSON.stringify(result));
+});
 
 // Global variables for modal state
 window.currentGroupName = '';
@@ -337,8 +429,31 @@ function addManualGroupFooters() {
     
     // Check if we already have the right number of footers - if so, don't recreate them
     const existingFooters = document.querySelectorAll('.manual-group-footer');
-    if (existingFooters.length === groupElements.length) {
-      // Footers already exist for all groups, don't recreate them
+    
+    // More robust check: verify each group actually has its footer
+    let allGroupsHaveFooters = true;
+    groupElements.forEach((groupElement, index) => {
+      const nextSibling = groupElement.nextElementSibling;
+      let hasFooter = false;
+      
+      // Look through the following elements to see if we find a footer for this group
+      let currentElement = nextSibling;
+      while (currentElement && !currentElement.classList.contains('tabulator-group')) {
+        if (currentElement.classList.contains('manual-group-footer') && 
+            currentElement.getAttribute('data-group') == index) {
+          hasFooter = true;
+          break;
+        }
+        currentElement = currentElement.nextElementSibling;
+      }
+      
+      if (!hasFooter) {
+        allGroupsHaveFooters = false;
+      }
+    });
+    
+    if (existingFooters.length === groupElements.length && allGroupsHaveFooters) {
+      // Footers already exist for all groups and are properly positioned, don't recreate them
       console.log('Footers already exist (' + existingFooters.length + ' of ' + groupElements.length + '), skipping recreation');
       return;
     }
@@ -348,9 +463,13 @@ function addManualGroupFooters() {
     existingFooters.forEach(footer => footer.remove());
     
     // Get the actual column widths from the table header
-    const headerCells = document.querySelectorAll('#example-table .tabulator-headers .tabulator-col');
-    const columnWidths = Array.from(headerCells).map(cell => {
-      return cell.getBoundingClientRect().width;
+    // For grouped headers, we need to get the top-level group headers, not the sub-columns
+    const skillHeader = document.querySelector('#example-table .tabulator-headers .tabulator-col[tabulator-field="Skill"]');
+    const groupHeaders = document.querySelectorAll('#example-table .tabulator-headers .tabulator-col-group');
+    
+    const skillColumnWidth = skillHeader ? skillHeader.getBoundingClientRect().width : 300;
+    const contactWidths = Array.from(groupHeaders).map(header => {
+      return header.getBoundingClientRect().width;
     });
     
     // Get unique area names from the table data to match with group elements
@@ -365,26 +484,26 @@ function addManualGroupFooters() {
       const contacts = JSON.parse(window.contactData);
       
       // Start with the skill column using actual width
-      const skillColumnWidth = columnWidths[0] || 300;
       let footerHTML = `<div class="tabulator-cell" style="width: ${skillColumnWidth}px; min-width: ${skillColumnWidth}px; max-width: ${skillColumnWidth}px; padding: 8px; text-align: left; font-weight: bold; box-sizing: border-box; overflow: hidden;">Notes:</div>`;
       
-      // Add a column for each contact with their buttons, using actual column widths
+      // Add columns for each contact using the grouped header widths
       contacts.forEach((contact, contactIndex) => {
-        const columnWidth = columnWidths[contactIndex + 1] || 150; // +1 because first column is skills
         const contactName = contact.fieldData.contact.replace(/'/g, "\\'"); // Escape single quotes
-        const contactId = contact.fieldData.contact_id;
+        
+        // Use the grouped header width for this contact
+        const contactWidth = contactWidths[contactIndex] || 200;
         
         footerHTML += `
-          <div class="tabulator-cell" style="width: ${columnWidth}px; min-width: ${columnWidth}px; max-width: ${columnWidth}px; padding: 4px; text-align: center; box-sizing: border-box; overflow: hidden;">
-            <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div class="tabulator-cell" style="width: ${contactWidth}px; min-width: ${contactWidth}px; max-width: ${contactWidth}px; padding: 2px; text-align: center; box-sizing: border-box; overflow: hidden;">
+            <div style="display: flex; flex-direction: column; gap: 3px; width: 100%; align-items: center;">
               <button title="Add note for ${contactName}" 
                       type="button"
-                      style="font-size: 10px; padding: 2px 4px; margin: 1px; white-space: nowrap; width: calc(100% - 6px); cursor: pointer;">
+                      style="font-size: 10px; padding: 4px 6px; margin: 0; white-space: nowrap; width: calc(100% - 4px); cursor: pointer; border: 1px solid #007acc; background: #007acc; color: white; border-radius: 4px; font-weight: 500; transition: all 0.2s ease;">
                 Add Note
               </button>
               <button title="View notes for ${contactName}" 
                       type="button"
-                      style="font-size: 10px; padding: 2px 4px; margin: 1px; white-space: nowrap; width: calc(100% - 6px); cursor: pointer;">
+                      style="font-size: 10px; padding: 4px 6px; margin: 0; white-space: nowrap; width: calc(100% - 4px); cursor: pointer; border: 1px solid #666; background: #f8f9fa; color: #333; border-radius: 4px; font-weight: 500; transition: all 0.2s ease;">
                 View Notes
               </button>
             </div>
@@ -485,13 +604,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function createTabulatorData(skillData, contactData, scoreData) {
-  // Step 1: Create the table columns (first column is 'Skill', others are contacts)
+  // Step 1: Create the table columns (first column is 'Skill', others are contacts with score and pass columns)
   const columns = [
       { title: "Skill", field: "Skill", width: 300, hozAlign: "left" }
   ];
 
   contactData.forEach(contact => {
-      columns.push({ title: contact.fieldData.contact, field: contact.fieldData.contact_id, hozAlign: "center", editor:"list", editorParams:{values:{"N":"N", "1":"1", "2":"2", "3":"3", "-":"-"}} });
+      const contactName = contact.fieldData.contact;
+      const contactId = contact.fieldData.contact_id;
+      
+      // Create a column group for each contact that spans both score and pass columns
+      columns.push({
+        title: contactName,
+        columns: [
+          // Add score column
+          { 
+            title: "Score", 
+            field: contactId, 
+            hozAlign: "center", 
+            width: 100,
+            editor: "list", 
+            editorParams: {values:{"N":"N", "1":"1", "2":"2", "3":"3", "-":"-"}} 
+          },
+          // Add pass checkbox column
+          { 
+            title: "Pass", 
+            field: contactId + "_pass", 
+            hozAlign: "center", 
+            width: 100,
+            formatter: function(cell) {
+              const isChecked = cell.getValue() === true || cell.getValue() === "true" || cell.getValue() === 1;
+              const checkboxId = `checkbox_${contactId}_${cell.getRow().getData().id}`;
+              return `<div style="display: flex; justify-content: center; align-items: center; height: 100%; gap: 4px;">
+                        <input type="checkbox" id="${checkboxId}" ${isChecked ? 'checked' : ''} 
+                               onchange="handlePassCheckboxChange(this, '${contactId}', '${cell.getRow().getData().id}')"
+                               style="cursor: pointer; transform: scale(1.1);">
+                        <label for="${checkboxId}" style="font-size: 11px; color: #666; cursor: pointer; user-select: none;">Pass</label>
+                      </div>`;
+            },
+            cellClick: function(e) {
+              // Prevent default cell click behavior for checkbox column
+              e.stopPropagation();
+              return false;
+            }
+          }
+        ]
+      });
   });
 
   // Step 2: Create the table rows with skill names and corresponding scores
@@ -505,10 +663,43 @@ function createTabulatorData(skillData, contactData, scoreData) {
           id: skill.fieldData.__ID
       };
 
-      // Fill in the scores for each contact
+      // Fill in the scores and pass values for each contact
       contactData.forEach(contact => {
-          const scoreEntry = scoreData.find(score => score.fieldData.Skill_ID === skill.fieldData.__ID && score.fieldData.Contact_ID === contact.fieldData.contact_id);
-          row[contact.fieldData.contact_id] = scoreEntry ? scoreEntry.fieldData.Data : "-"; // Use "-" if no score is found
+          // Find all score entries for this skill and contact
+          const scoreEntries = scoreData.filter(score => 
+            score.fieldData.Skill_ID === skill.fieldData.__ID && 
+            score.fieldData.Contact_ID === contact.fieldData.contact_id
+          );
+          
+          // For score, find the most recent record that has an actual score value (not blank/empty)
+          let scoreEntry = null;
+          if (scoreEntries.length > 0) {
+            // Filter to only entries that have a non-empty Data field
+            const entriesWithScores = scoreEntries.filter(entry => 
+              entry.fieldData.Data && 
+              entry.fieldData.Data.toString().trim() !== ""
+            );
+            
+            if (entriesWithScores.length > 0) {
+              // Sort by timestamp and take the most recent one with a score
+              scoreEntry = entriesWithScores.sort((a, b) => {
+                const timeA = new Date(a.fieldData.zzCreatedTimestamp || 0);
+                const timeB = new Date(b.fieldData.zzCreatedTimestamp || 0);
+                return timeB - timeA; // Most recent first
+              })[0];
+            }
+          }
+          row[contact.fieldData.contact_id] = scoreEntry ? scoreEntry.fieldData.Data : "-";
+          
+          // For pass checkbox, check if ANY record has pass as true (unchanged logic)
+          let passValue = false;
+          if (scoreEntries.length > 0) {
+            passValue = scoreEntries.some(entry => {
+              const passData = entry.fieldData.pass;
+              return passData === 1 || passData === "1" || passData === true || passData === "true";
+            });
+          }
+          row[contact.fieldData.contact_id + "_pass"] = passValue;
         });
         
         tableData.push(row);
@@ -520,19 +711,67 @@ function createTabulatorData(skillData, contactData, scoreData) {
 
 }
 
-table.on("cellEdited", function(cell){
-  // Triggered when a cell's value has been changed
-  const conId = cell.getField();
-  const skillId = cell.getData().id;
-  const value = cell.getValue();
-  const result = {"conId":conId,"skillId":skillId,"value":value,"mode":'updateScore'};
-
-  runScript(JSON.stringify(result));
-});
+// Global function to handle pass checkbox changes
+window.handlePassCheckboxChange = function(checkbox, contactId, skillId) {
+  // If a label was clicked, find the checkbox and don't double-toggle
+  if (checkbox.tagName === 'LABEL') {
+    checkbox = checkbox.previousElementSibling;
+    // Don't toggle here - let the label's natural behavior toggle the checkbox
+  } else {
+    // If checkbox was clicked directly, no need to manually toggle
+  }
+  
+  const isChecked = checkbox.checked;
+  const result = {
+    "conId": contactId,
+    "skillId": skillId,
+    "pass": isChecked,
+    "mode": 'updatePass'
+  };
+  
+  console.log('Pass checkbox changed:', result);
+  
+  // Check if FileMaker runScript is available
+  if (typeof runScript === 'function') {
+    runScript(JSON.stringify(result));
+  } else if (typeof FileMaker !== 'undefined' && typeof FileMaker.PerformScriptWithOption === 'function') {
+    FileMaker.PerformScriptWithOption("Manage: Competencies", JSON.stringify(result), 0);
+  } else {
+    console.error('FileMaker runScript function not available');
+  }
+};
 
 runScript = function (param) {
     FileMaker.PerformScriptWithOption("Manage: Competencies", param, 0);
 }
+
+// Function to update pass checkbox from FileMaker (if needed)
+window.updatePassCheckbox = function(contactId, skillId, passValue) {
+  if (window.table) {
+    const rows = window.table.getData();
+    const rowToUpdate = rows.find(row => row.id === skillId);
+    if (rowToUpdate) {
+      window.table.updateData([{
+        id: skillId,
+        [contactId + "_pass"]: passValue
+      }]);
+    }
+  }
+};
+
+// Function to update score from FileMaker (if needed)
+window.updateScore = function(contactId, skillId, scoreValue) {
+  if (window.table) {
+    const rows = window.table.getData();
+    const rowToUpdate = rows.find(row => row.id === skillId);
+    if (rowToUpdate) {
+      window.table.updateData([{
+        id: skillId,
+        [contactId]: scoreValue
+      }]);
+    }
+  }
+};
 
 // Test function to manually test the modal
 window.testModal = function() {
@@ -555,16 +794,18 @@ window.testTableWithData = function() {
   ]);
   
   const sampleScoreData = JSON.stringify([
-    { fieldData: { Skill_ID: "1", Contact_ID: "contact_1", Data: "2" } },
-    { fieldData: { Skill_ID: "1", Contact_ID: "contact_2", Data: "3" } },
-    { fieldData: { Skill_ID: "2", Contact_ID: "contact_1", Data: "3" } },
-    { fieldData: { Skill_ID: "2", Contact_ID: "contact_2", Data: "2" } },
-    { fieldData: { Skill_ID: "3", Contact_ID: "contact_1", Data: "2" } },
-    { fieldData: { Skill_ID: "3", Contact_ID: "contact_2", Data: "3" } },
-    { fieldData: { Skill_ID: "4", Contact_ID: "contact_1", Data: "1" } },
-    { fieldData: { Skill_ID: "4", Contact_ID: "contact_2", Data: "2" } },
-    { fieldData: { Skill_ID: "5", Contact_ID: "contact_1", Data: "3" } },
-    { fieldData: { Skill_ID: "5", Contact_ID: "contact_2", Data: "2" } }
+    { fieldData: { Skill_ID: "1", Contact_ID: "contact_1", Data: "2", pass: 1, zzCreatedTimestamp: "08/05/2025 10:00:00" } },
+    { fieldData: { Skill_ID: "1", Contact_ID: "contact_1", Data: "", pass: "", zzCreatedTimestamp: "08/06/2025 15:00:00" } }, // More recent but no score
+    { fieldData: { Skill_ID: "1", Contact_ID: "contact_2", Data: "3", pass: "", zzCreatedTimestamp: "08/06/2025 14:00:00" } },
+    { fieldData: { Skill_ID: "2", Contact_ID: "contact_1", Data: "3", pass: 1, zzCreatedTimestamp: "08/06/2025 12:00:00" } },
+    { fieldData: { Skill_ID: "2", Contact_ID: "contact_2", Data: "1", pass: "", zzCreatedTimestamp: "08/05/2025 09:00:00" } },
+    { fieldData: { Skill_ID: "2", Contact_ID: "contact_2", Data: "", pass: 1, zzCreatedTimestamp: "08/06/2025 16:00:00" } }, // Most recent but no score, has pass
+    { fieldData: { Skill_ID: "3", Contact_ID: "contact_1", Data: "2", pass: "", zzCreatedTimestamp: "08/06/2025 11:00:00" } },
+    { fieldData: { Skill_ID: "3", Contact_ID: "contact_2", Data: "3", pass: 1, zzCreatedTimestamp: "08/06/2025 13:00:00" } },
+    { fieldData: { Skill_ID: "4", Contact_ID: "contact_1", Data: "1", pass: "", zzCreatedTimestamp: "08/06/2025 10:00:00" } },
+    { fieldData: { Skill_ID: "4", Contact_ID: "contact_2", Data: "2", pass: "", zzCreatedTimestamp: "08/06/2025 09:00:00" } },
+    { fieldData: { Skill_ID: "5", Contact_ID: "contact_1", Data: "3", pass: 1, zzCreatedTimestamp: "08/06/2025 08:00:00" } },
+    { fieldData: { Skill_ID: "5", Contact_ID: "contact_2", Data: "2", pass: 1, zzCreatedTimestamp: "08/06/2025 07:00:00" } }
   ]);
   
   // Call loadTable with sample data
