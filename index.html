@@ -9,6 +9,32 @@
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
   </head>
   <body>
+    <!-- Level Filter Controls -->
+    <div id="level-filter-container" style="padding: 15px; background: #f8f9fa; border-bottom: 1px solid #dee2e6; margin-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <label style="font-weight: bold; color: #495057;">Filter by Level:</label>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+            <input type="checkbox" id="level-beginning" value="BEGINNING" checked style="transform: scale(1.1);">
+            <span style="padding: 2px 8px; background: #e8f5e8; color: #2d5a2d; border-radius: 12px; font-size: 12px; font-weight: 500;">BEGINNING</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+            <input type="checkbox" id="level-developing" value="DEVELOPING" checked style="transform: scale(1.1);">
+            <span style="padding: 2px 8px; background: #fff3cd; color: #856404; border-radius: 12px; font-size: 12px; font-weight: 500;">DEVELOPING</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+            <input type="checkbox" id="level-proficient" value="PROFICIENT" checked style="transform: scale(1.1);">
+            <span style="padding: 2px 8px; background: #cce5ff; color: #004085; border-radius: 12px; font-size: 12px; font-weight: 500;">PROFICIENT</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+            <input type="checkbox" id="level-advanced" value="ADVANCED" checked style="transform: scale(1.1);">
+            <span style="padding: 2px 8px; background: #f8d7da; color: #721c24; border-radius: 12px; font-size: 12px; font-weight: 500;">ADVANCED</span>
+          </label>
+        </div>
+        <button id="apply-filter-btn" onclick="applyLevelFilter()" style="padding: 6px 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px;">Apply Filter</button>
+      </div>
+    </div>
+    
     <div id="example-table"></div>
     
     <!-- Modal for Add/View Notes -->

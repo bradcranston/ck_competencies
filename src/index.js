@@ -6,6 +6,9 @@ window.skillData = skillData;
 window.contactData = contactData;
 window.scoreData = scoreData;
 
+// Initialize with all levels selected
+window.selectedLevels = ['BEGINNING', 'DEVELOPING', 'PROFICIENT', 'ADVANCED'];
+
 const tabledata = createTabulatorData(JSON.parse(skillData), JSON.parse(contactData), JSON.parse(scoreData))
 
 // Create the table and store it globally
@@ -49,6 +52,75 @@ window.table = new Tabulator("#example-table", {
   },
   layoutColumnsOnNewData: true
 });
+
+// Level filtering functionality
+window.applyLevelFilter = function() {
+  const checkboxes = document.querySelectorAll('#level-filter-container input[type="checkbox"]');
+  window.selectedLevels = Array.from(checkboxes)
+    .filter(cb => cb.checked)
+    .map(cb => cb.value);
+  
+  console.log('Selected levels:', window.selectedLevels);
+  
+  // Preserve current table data state before filtering
+  if (window.table && window.skillData && window.contactData && window.scoreData) {
+    // Get current table data to preserve any user inputs
+    const currentTableData = window.table.getData();
+    
+    // Create fresh table data with filtered levels
+    const tabledata = createTabulatorData(
+      JSON.parse(window.skillData), 
+      JSON.parse(window.contactData), 
+      JSON.parse(window.scoreData)
+    );
+    
+    // Merge current user inputs back into the filtered data
+    const mergedData = tabledata.data.map(newRow => {
+      // Find corresponding row in current data
+      const currentRow = currentTableData.find(row => row.id === newRow.id);
+      if (currentRow) {
+        // Preserve user-entered values for score and pass fields
+        const contacts = JSON.parse(window.contactData);
+        contacts.forEach(contact => {
+          const contactId = contact.fieldData.contact_id;
+          // Preserve score values if they exist in current data
+          if (currentRow[contactId] !== undefined) {
+            newRow[contactId] = currentRow[contactId];
+          }
+          // Preserve pass values if they exist in current data
+          if (currentRow[contactId + "_pass"] !== undefined) {
+            newRow[contactId + "_pass"] = currentRow[contactId + "_pass"];
+          }
+        });
+      }
+      return newRow;
+    });
+    
+    window.table.setData(mergedData);
+  }
+};
+
+// Helper function to get level color
+window.getLevelColor = function(level) {
+  const levelColors = {
+    'BEGINNING': '#e8f5e8',     // Light green
+    'DEVELOPING': '#fff3cd',    // Light yellow  
+    'PROFICIENT': '#cce5ff',    // Light blue
+    'ADVANCED': '#f8d7da'       // Light red
+  };
+  return levelColors[level] || '#ffffff';
+};
+
+// Helper function to get level text color
+window.getLevelTextColor = function(level) {
+  const levelTextColors = {
+    'BEGINNING': '#2d5a2d',     // Dark green
+    'DEVELOPING': '#856404',    // Dark yellow/orange
+    'PROFICIENT': '#004085',    // Dark blue
+    'ADVANCED': '#721c24'       // Dark red
+  };
+  return levelTextColors[level] || '#000000';
+};
 
 // Single backup method - add footers after a reasonable delay
 setTimeout(() => {
@@ -483,8 +555,8 @@ function addManualGroupFooters() {
       // Create footer HTML with columns matching the table structure
       const contacts = JSON.parse(window.contactData);
       
-      // Start with the skill column using actual width
-      let footerHTML = `<div class="tabulator-cell" style="width: ${skillColumnWidth}px; min-width: ${skillColumnWidth}px; max-width: ${skillColumnWidth}px; padding: 8px; text-align: left; font-weight: bold; box-sizing: border-box; overflow: hidden;">Notes:</div>`;
+      // Start with the skill column using actual width and sticky positioning
+      let footerHTML = `<div class="tabulator-cell" style="width: ${skillColumnWidth}px; min-width: ${skillColumnWidth}px; max-width: ${skillColumnWidth}px; padding: 8px; text-align: left; font-weight: bold; box-sizing: border-box; overflow: hidden; position: sticky; left: 0; z-index: 10; background: #f5f5f5; border-right: 1px solid #ddd;">Notes:</div>`;
       
       // Add columns for each contact using the grouped header widths
       contacts.forEach((contact, contactIndex) => {
@@ -606,7 +678,27 @@ document.addEventListener('DOMContentLoaded', function() {
 function createTabulatorData(skillData, contactData, scoreData) {
   // Step 1: Create the table columns (first column is 'Skill', others are contacts with score and pass columns)
   const columns = [
-      { title: "Skill", field: "Skill", width: 300, hozAlign: "left" }
+      { 
+        title: "Skill", 
+        field: "Skill", 
+        width: 400, 
+        hozAlign: "left",
+        frozen: true,
+        formatter: function(cell) {
+          const rowData = cell.getRow().getData();
+          const level = rowData.level;
+          const backgroundColor = getLevelColor(level);
+          const textColor = getLevelTextColor(level);
+          
+          return `<div style="background-color: ${backgroundColor}; color: ${textColor}; padding: 8px; margin: -4px; font-weight: 500; height: 100%; display: flex; align-items: center;">
+                    ${cell.getValue()}
+                  </div>`;
+        },
+        cellClick: function(e, cell) {
+          // Allow text selection in skill cells
+          e.stopPropagation();
+        }
+      }
   ];
 
   contactData.forEach(contact => {
@@ -617,27 +709,42 @@ function createTabulatorData(skillData, contactData, scoreData) {
       columns.push({
         title: contactName,
         columns: [
-          // Add score column
+          // Add score column with level-based color coding
           { 
             title: "Score", 
             field: contactId, 
             hozAlign: "center", 
             width: 100,
             editor: "list", 
-            editorParams: {values:{"N":"N", "1":"1", "2":"2", "3":"3", "-":"-"}} 
+            editorParams: {values:{"N":"N", "1":"1", "2":"2", "3":"3", "-":"-"}},
+            formatter: function(cell) {
+              const rowData = cell.getRow().getData();
+              const level = rowData.level;
+              const backgroundColor = getLevelColor(level);
+              const textColor = getLevelTextColor(level);
+              const value = cell.getValue();
+              
+              return `<div style="background-color: ${backgroundColor}; color: ${textColor}; padding: 8px; margin: -4px; font-weight: 500; height: 100%; display: flex; align-items: center; justify-content: center;">
+                        ${value}
+                      </div>`;
+            }
           },
-          // Add pass checkbox column
+          // Add pass checkbox column with level-based color coding
           { 
             title: "Pass", 
             field: contactId + "_pass", 
             hozAlign: "center", 
             width: 100,
             formatter: function(cell) {
+              const rowData = cell.getRow().getData();
+              const level = rowData.level;
+              const backgroundColor = getLevelColor(level);
               const isChecked = cell.getValue() === true || cell.getValue() === "true" || cell.getValue() === 1;
-              const checkboxId = `checkbox_${contactId}_${cell.getRow().getData().id}`;
-              return `<div style="display: flex; justify-content: center; align-items: center; height: 100%; gap: 4px;">
+              const checkboxId = `checkbox_${contactId}_${rowData.id}`;
+              
+              return `<div style="background-color: ${backgroundColor}; padding: 8px; margin: -4px; height: 100%; display: flex; justify-content: center; align-items: center; gap: 4px;">
                         <input type="checkbox" id="${checkboxId}" ${isChecked ? 'checked' : ''} 
-                               onchange="handlePassCheckboxChange(this, '${contactId}', '${cell.getRow().getData().id}')"
+                               onchange="handlePassCheckboxChange(this, '${contactId}', '${rowData.id}')"
                                style="cursor: pointer; transform: scale(1.1);">
                         <label for="${checkboxId}" style="font-size: 11px; color: #666; cursor: pointer; user-select: none;">Pass</label>
                       </div>`;
@@ -655,11 +762,29 @@ function createTabulatorData(skillData, contactData, scoreData) {
   // Step 2: Create the table rows with skill names and corresponding scores
   const tableData = [];
 
-  skillData.forEach(skill => {
-      // Initialize row with skill name
+  // Define level order for sorting
+  const levelOrder = ['BEGINNING', 'DEVELOPING', 'PROFICIENT', 'ADVANCED'];
+
+  // Filter skills by selected levels and sort by level
+  const filteredSkills = skillData
+    .filter(skill => window.selectedLevels.includes(skill.fieldData.level))
+    .sort((a, b) => {
+      // First sort by level
+      const aLevelIndex = levelOrder.indexOf(a.fieldData.level);
+      const bLevelIndex = levelOrder.indexOf(b.fieldData.level);
+      if (aLevelIndex !== bLevelIndex) {
+        return aLevelIndex - bLevelIndex;
+      }
+      // Then sort by skill name within the same level
+      return a.fieldData.Skill.localeCompare(b.fieldData.Skill);
+    });
+
+  filteredSkills.forEach(skill => {
+      // Initialize row with skill name, area, and level
       const row = {
           Skill: skill.fieldData.Skill,
           Area: skill.fieldData.Area,
+          level: skill.fieldData.level,
           id: skill.fieldData.__ID
       };
 
@@ -707,8 +832,6 @@ function createTabulatorData(skillData, contactData, scoreData) {
 
   // Step 3: Return the table structure with columns and data
   return { columns, data: tableData };
- 
-
 }
 
 // Global function to handle pass checkbox changes
@@ -781,11 +904,11 @@ window.testModal = function() {
 // Test function to load sample data and test grouping
 window.testTableWithData = function() {
   const sampleSkillData = JSON.stringify([
-    { fieldData: { Skill: "JavaScript", Area: "Technical Skills", __ID: "1" } },
-    { fieldData: { Skill: "HTML/CSS", Area: "Technical Skills", __ID: "2" } },
-    { fieldData: { Skill: "Communication", Area: "Soft Skills", __ID: "3" } },
-    { fieldData: { Skill: "Leadership", Area: "Soft Skills", __ID: "4" } },
-    { fieldData: { Skill: "Project Management", Area: "Management Skills", __ID: "5" } }
+    { fieldData: { Skill: "JavaScript", Area: "Technical Skills", __ID: "1", level: "BEGINNING" } },
+    { fieldData: { Skill: "HTML/CSS", Area: "Technical Skills", __ID: "2", level: "DEVELOPING" } },
+    { fieldData: { Skill: "Communication", Area: "Soft Skills", __ID: "3", level: "PROFICIENT" } },
+    { fieldData: { Skill: "Leadership", Area: "Soft Skills", __ID: "4", level: "ADVANCED" } },
+    { fieldData: { Skill: "Project Management", Area: "Management Skills", __ID: "5", level: "PROFICIENT" } }
   ]);
   
   const sampleContactData = JSON.stringify([

@@ -1,0 +1,1542 @@
+[
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can clean and store knives properly",
+			"__ID" : "2835F2E7-36BD-4194-9F46-0C33A11ACE71",
+			"level" : "BEGINNING"
+		},
+		"modId" : "6",
+		"portalData" : {},
+		"recordId" : "76"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can make simple cuts with guidance",
+			"__ID" : "6AC1A90B-3B74-4D5B-AEF9-86D49E25A008",
+			"level" : "BEGINNING"
+		},
+		"modId" : "5",
+		"portalData" : {},
+		"recordId" : "77"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can hold a knife with proper grip and stance",
+			"__ID" : "750FCAA9-7B9C-46E4-BD52-6F46BC5030E3",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "78"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can set up cutting board station properly",
+			"__ID" : "8D96343D-4500-4EC7-ADD8-2465DEC36CAB",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "79"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can make basic cuts (rough chop, slice) consistently",
+			"__ID" : "F55503A3-82F9-47D2-A9DC-DBB862F852F7",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "80"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain proper cutting board cleanliness",
+			"__ID" : "E8B42A8C-72F2-400D-BAA6-5F1613B5CF1D",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "81"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can hold knife with proper grip for 15+ minutes",
+			"__ID" : "C2EC2F16-9515-4D8D-9768-477496F2EF74",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "82"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can cut without injury for multiple consecutive days",
+			"__ID" : "3DCBC240-03B4-472D-A2D0-14F601FE9118",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "83"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can dice vegetables uniformly and quickly",
+			"__ID" : "503D7736-ABD0-4B23-B6B9-31CE543029AA",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "84"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can safely transfer ingredients without accidents",
+			"__ID" : "B1DCAB8D-6B34-4579-868A-DF2FE75409EF",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "85"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can choose appropriate knife for specific tasks",
+			"__ID" : "ADAEB33C-4FCA-4F71-A51C-3CBBE4E8F00A",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "86"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can work efficiently without constant supervision",
+			"__ID" : "4476B824-D31F-4B1F-848F-E543423E2E9B",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "87"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain knife sharpness and perform basic sharpening",
+			"__ID" : "30580CF4-2B52-439D-90D8-152019363519",
+			"level" : "ADVANCED"
+		},
+		"modId" : "5",
+		"portalData" : {},
+		"recordId" : "91"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can execute advanced cuts (chiffonade, julienne, brunoise) consistently ",
+			"__ID" : "EA28363F-2E23-4D50-8B77-31946CA5AEF5",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "92"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can breakdown pieces of meat (chicken, pork, beef)",
+			"__ID" : "A3CD7831-2E97-4B2D-9D74-1194F05CA20B",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "93"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "KNIFE SKILLS",
+			"ProgramArea_ID" : "2CA2BD87-6E3D-4803-8E41-379B5D0D89DC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can demonstrate proper knife techniques to others",
+			"__ID" : "61F150E5-73E6-4E7D-8EEE-1AC58DECAAA6",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "94"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can set up basic workstation organization",
+			"__ID" : "D0335C20-3B08-48F5-83CB-2DDC57A76877",
+			"level" : "BEGINNING"
+		},
+		"modId" : "5",
+		"portalData" : {},
+		"recordId" : "95"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can gather required ingredients and tools",
+			"__ID" : "1536F02B-080A-4789-8579-A2B0A0EBEB16",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "96"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify common cooking measurements and abbreviations",
+			"__ID" : "1A535A54-892B-4FC3-B6FC-BF25FF55079D",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "97"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can read and understand basic recipe formats",
+			"__ID" : "7E1CD6C2-D001-48F6-BED3-52F0785142C9",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "98"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can measure ingredients accurately using various tools",
+			"__ID" : "26A8D51E-E7FE-416C-9F71-70C220E9FFB0",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "5",
+		"portalData" : {},
+		"recordId" : "99"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can prepare basic mise en place for simple recipes",
+			"__ID" : "CBC5D56E-6907-4463-B95F-C7FC6BFB0CD8",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "100"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can follow recipe steps in correct sequence",
+			"__ID" : "8A431D4B-29E1-4DCC-96C8-E6493EB29BF8",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "101"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify when prep work is complete and ready",
+			"__ID" : "0658C0E4-CA6C-4F5E-913F-F23530DCF0A5",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "102"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can prepare mise en place efficiently for multiple recipes",
+			"__ID" : "BB06C120-D6F2-4E0A-8911-73B563ED02DC",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "103"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can organize prep work to maximize efficiency",
+			"__ID" : "510536D6-94BC-4830-B27C-B4716127B6C5",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "104"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can read and interpret complex recipe instructions",
+			"__ID" : "980F49CC-802D-428E-83CF-7AD71B5346AA",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "105"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain organization throughout shift",
+			"__ID" : "93CB58FA-F909-4558-8492-C6F906D0F51E",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "106"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can modify recipes for dietary restrictions or allergies",
+			"__ID" : "74526E7C-486B-4052-9B10-CA48A4A8C000",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "107"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can scale recipes up or down accurately",
+			"__ID" : "46E46115-FC0C-4E5F-AFB7-4FDFEC4CC88F",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "108"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can create mise en place plans for complex multi-component dishes",
+			"__ID" : "DF336650-9F7F-4962-A446-A3C32F00BE83",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "109"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "RECIPE PREPARATION",
+			"ProgramArea_ID" : "78AD9817-6B85-411B-A5D9-A89BEDEE96EC",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can troubleshoot recipe problems and make adjustments",
+			"__ID" : "F34F55F0-298A-4A31-844F-257CD7DAF116",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "110"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify different cooking methods and when to use them",
+			"__ID" : "E72E42D7-7AAA-4C62-9CEA-6413BFDEBF29",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "111"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can safely operate basic cooking equipment",
+			"__ID" : "B6D8035C-C568-4FA2-B1F2-C3F4674019DE",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "112"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can recognize when food is burning or overcooking",
+			"__ID" : "50D30286-8F6C-4F32-8C95-D8577D69AF79",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "113"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can follow basic cooking instructions with supervision",
+			"__ID" : "F950692F-D5DE-41F9-A20F-10E06BC8EAA2",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "114"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can execute basic cooking methods (boil, steam, pan-fry)",
+			"__ID" : "414DA329-CBA5-4181-B094-963FD252AFA6",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "115"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can recognize visual and aromatic cues for doneness",
+			"__ID" : "714190BA-236F-4A60-8503-623DD5BB86A5",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "116"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can control heat levels appropriately",
+			"__ID" : "CA361325-DE9B-46D6-B3EF-DB366EF47D28",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "117"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can season dishes during cooking process",
+			"__ID" : "9C1581A5-42C1-4AA3-B3AC-0113AF25BEA8",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "118"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can name and explain mother sauces and their derivatives",
+			"__ID" : "FE76E061-5EF4-44A4-BF2B-CD7207344D68",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "119"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can properly braise, roast, and grill proteins to doneness",
+			"__ID" : "F8122039-2A18-4D54-B1BC-BC3B3E46D28C",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "120"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can sauté vegetables maintaining proper texture and color",
+			"__ID" : "634B088A-DA51-48F1-B72C-AB778E8318B0",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "121"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can multitask different cooking techniques simultaneously",
+			"__ID" : "5BF33049-22BD-44EE-BD76-6018F69FF1EF",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "122"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can teach cooking techniques to other students",
+			"__ID" : "B13DE823-E535-45F2-B10D-7D8DD3700288",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "123"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can adapt techniques based on ingredient variations",
+			"__ID" : "8D0A432D-A5AD-4AC0-A912-1499507ED941",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "124"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "COOKING TECHNIQUES",
+			"ProgramArea_ID" : "8CA5DB6D-F0D7-4501-920C-C3ABC8FC2902",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can execute advanced techniques (Confit, Thickening, Flavor Development)",
+			"__ID" : "62338F5C-50FE-4B0A-81CB-B1296180D777",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "125"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can report accidents or injuries immediately",
+			"__ID" : "B926B95D-9509-4250-A180-0F5E7A526DC9",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "126"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can use cleaning chemicals safely and appropriately",
+			"__ID" : "793113AD-8ADD-4A7B-AA2C-EDA6E397BB6B",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "127"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can wash hands properly and at appropriate times",
+			"__ID" : "DB170880-6E70-4506-A22D-B84A48771650",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "128"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can follow basic personal hygiene requirements",
+			"__ID" : "461DE059-3216-40D0-B2D5-01C0E078F510",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "129"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify potential safety hazards in the kitchen",
+			"__ID" : "77440278-2493-44BF-A809-F470C4CED98A",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "130"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can use separate cutting boards for different food types",
+			"__ID" : "47162BB2-8171-467F-AF15-D83644999FE1",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "131"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can clean and sanitize work surfaces regularly",
+			"__ID" : "6D777163-7905-4EC2-813F-9522187F483E",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "132"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can use all kitchen safety calls consistently (Sharp, Behind, Hot, etc)",
+			"__ID" : "E9B87082-5360-4ABC-A7B3-280953ECC8F8",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "133"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can monitor and maintain proper food storage temperatures",
+			"__ID" : "85214B87-0A5C-49A9-B4AC-B8089DB407AB",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "134"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can prevent cross-contamination consistently",
+			"__ID" : "E7B20749-F694-4FD2-9FC8-DC3DC2B95704",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "135"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can respond appropriately to food safety issues",
+			"__ID" : "4A9BC14F-5C50-4E55-A341-72DCA14F59ED",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "136"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain sanitation standards throughout shift",
+			"__ID" : "CDA8A05C-026A-43F0-9D96-FC73CFE47255",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "137"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can train others in food safety and sanitation procedures",
+			"__ID" : "65867F17-CCAC-4867-ACBB-2C7C26697D41",
+			"level" : "ADVANCED"
+		},
+		"modId" : "5",
+		"portalData" : {},
+		"recordId" : "138"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify and correct food safety violations immediately",
+			"__ID" : "1CD4E8BF-2C95-4211-B4AF-0E3100E05E92",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "139"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SAFETY AND SANITATION",
+			"ProgramArea_ID" : "ADB62861-55B9-4655-97D6-5C4E73C2D217",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain food safety standards under pressure",
+			"__ID" : "910CE40A-9460-408B-B1C7-ABCD2CF0FF47",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "140"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can name and identify basic kitchen ingredients",
+			"__ID" : "9F0D0BE2-0576-4C5E-86F5-84BA83FE84E2",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "141"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can distinguish between similar-looking ingredients",
+			"__ID" : "BB3FE7B7-C2B4-4BEB-B244-632A181F2196",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "142"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can ask appropriate questions about unfamiliar ingredients",
+			"__ID" : "53DBC751-58DE-40A7-8F43-2E13034FF470",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "143"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can locate ingredients in storage areas",
+			"__ID" : "BADAC065-D496-4303-829F-B36BEBB21C9F",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "144"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify common vegetables, proteins, and pantry items",
+			"__ID" : "6F353DE1-6519-484D-A85E-5320AC184651",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "145"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can recognize signs of freshness and quality",
+			"__ID" : "AEAEAF3F-0486-465B-8AE3-A2A54C32CDFB",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "146"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can categorize ingredients by cooking method",
+			"__ID" : "C93D4EC4-98C4-4042-875D-BD30769569D8",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "147"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify basic flavor profiles (sweet, salty, sour, bitter, umami)",
+			"__ID" : "115E8E0F-49D4-4074-B0A2-75C60DAF073E",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "148"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can select quality ingredients by sight, smell, and touch",
+			"__ID" : "D1CAD5BB-FAC1-4640-93C8-0EDD68A7969B",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "5",
+		"portalData" : {},
+		"recordId" : "149"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify herbs and spices and their culinary uses",
+			"__ID" : "702B8B36-3282-4E00-A852-7CB65187B43A",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "150"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can explain proper storage methods for different ingredients",
+			"__ID" : "9CAAAA1A-4C6A-4CCF-9FFD-40CAD13019B2",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "151"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can suggest ingredient combinations for flavor development",
+			"__ID" : "839BEC69-91F3-43BD-84FF-E0704F0C1407",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "152"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can suggest ingredient substitutions for dietary needs",
+			"__ID" : "844DC0D6-2778-434B-A437-21946DFE69BD",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "153"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify seasonal availability and peak quality periods",
+			"__ID" : "840CFBEA-8314-448E-BD8B-9486AE9B94C0",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "154"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can explain flavor profiles and complementary pairings",
+			"__ID" : "40D91DBD-9898-42A6-822D-2D177E53979D",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "155"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "INGREDIENT KNOWLEDGE",
+			"ProgramArea_ID" : "EEE57698-6B3F-4FE1-8E63-4555AAA1ED61",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can educate others about ingredient origins and uses",
+			"__ID" : "EEC90697-32A2-4299-AF7F-F8BF64DA63CB",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "156"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can complete assigned tasks within given timeframes",
+			"__ID" : "7B731F0D-9E43-4A0F-87EB-0AC3C37B8276",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "157"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify when I'm working too slowly",
+			"__ID" : "01CB6149-4523-4A39-AA71-E8D4DDA3E453",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "158"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can ask for help when falling behind schedule",
+			"__ID" : "0B188DFC-AD0E-45D1-BFA1-83811A8F8DFC",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "159"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can work steadily without frequent breaks",
+			"__ID" : "4FD01CF7-2C38-449D-BC66-AE76CA267DAE",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "160"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can complete tasks without unnecessary delays",
+			"__ID" : "8A165D81-09D1-4AA9-90D1-9496156A9EBC",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "161"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain consistent pace throughout work period",
+			"__ID" : "185621A9-AA25-46A3-AD6C-336F1D02E2D5",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "162"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can organize workspace to minimize movement",
+			"__ID" : "8228C57D-19FD-41A5-9D55-8E5FE02A1B4E",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "163"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can follow time management guidelines for tasks",
+			"__ID" : "9F21F66F-C564-4752-9D6C-E4874018F727",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "164"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can complete tasks within industry-standard timeframes",
+			"__ID" : "E459A425-56E8-4AD5-A6F6-8FDE8A16751D",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "165"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can multitask effectively without compromising quality",
+			"__ID" : "06260A68-7502-43F5-80F6-BA7F9981F16D",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "166"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can anticipate next steps and prepare accordingly",
+			"__ID" : "C1DFF6E8-0CF7-4AE6-8854-7FBFD8DA794F",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "167"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can work efficiently with minimal supervision",
+			"__ID" : "60BAA1E3-60F9-42E4-8DA7-F99F2F959709",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "168"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain quality while working at professional speed",
+			"__ID" : "1D1E8049-BD2A-4A2E-AFBE-7BEFDA056A90",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "169"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can help improve workflow efficiency for the team",
+			"__ID" : "2C58DAC5-88D5-40E0-80FB-02921F311757",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "170"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can handle rush periods while maintaining standards",
+			"__ID" : "38855930-B867-4597-9AC5-A1D45900A36E",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "171"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "SPEED AND EFFICIENCY",
+			"ProgramArea_ID" : "51C3B1A7-84E8-4A5B-AA19-44A052342B10",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can prioritize tasks to maximize productivity",
+			"__ID" : "09779571-D843-49D3-893B-02C03C88D0AF",
+			"level" : "ADVANCED"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "172"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify when equipment is malfunctioning",
+			"__ID" : "34A98F0D-08F6-4083-9410-DC9D83EEF5D0",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "173"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can follow basic safety procedures for equipment use",
+			"__ID" : "2B33603A-E472-4DD0-A8BE-AE794FF68EB6",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "174"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can turn equipment on/off and adjust basic settings",
+			"__ID" : "42121911-ABD3-4C8C-9B8D-D19086FCB21A",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "175"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can identify different pieces of kitchen equipment and their purposes",
+			"__ID" : "58E4CAB0-1303-474F-BC98-2909233D6738",
+			"level" : "BEGINNING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "176"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can use basic kitchen equipment (mixers, food processors, ovens) safely",
+			"__ID" : "DA498AF0-1CB3-4B27-94D5-BA532FE7F220",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "177"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can clean equipment properly after each use",
+			"__ID" : "78CF891A-4A40-4342-ADAA-A48171B95E06",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "178"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can follow Chef instructions for equipment operation",
+			"__ID" : "D6FCC477-3F88-4BDA-B02E-D0A2DEB17B26",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "179"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can report equipment problems to supervisors",
+			"__ID" : "0416D77B-2D6F-4529-8D9C-9E40A7924504",
+			"level" : "DEVELOPING"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "180"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can operate all standard kitchen equipment efficiently",
+			"__ID" : "28255185-D3C4-479A-8604-192F712BF486",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "4",
+		"portalData" : {},
+		"recordId" : "181"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can perform routine maintenance and cleaning procedures",
+			"__ID" : "B50D6CCC-BDB5-4A75-8EFD-A494272FEF1B",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "182"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can adapt techniques based on equipment limitations",
+			"__ID" : "89F586F3-5421-4C7B-A842-89DB226679A1",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "183"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can recognize when equipment needs professional service",
+			"__ID" : "F272BB14-9937-4B90-A1FF-84923BC070A4",
+			"level" : "PROFICIENT"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "184"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can troubleshoot equipment problems and perform basic repairs",
+			"__ID" : "C311D1C1-5516-4F00-9B53-32130A313FD9",
+			"level" : "ADVANCED"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "185"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can train others on proper equipment use and safety",
+			"__ID" : "121BD96A-4BC1-4E03-A99C-839E8B20C8F6",
+			"level" : "ADVANCED"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "186"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can operate specialized equipment (combi ovens, meat slicer)",
+			"__ID" : "7490F39D-F7FA-4F3C-9C69-957260E4501D",
+			"level" : "ADVANCED"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "187"
+	},
+	{
+		"fieldData" : 
+		{
+			"Area" : "EQUIPMENT USE AND HANDLING",
+			"ProgramArea_ID" : "92263AA6-0982-4F46-BC58-F2236EC622D4",
+			"Program_ID" : "13HVXS40PIVV0J2VLDXNOXF",
+			"Skill" : "I can maintain equipment to extend its lifespan",
+			"__ID" : "D01F10B8-0EE4-46BD-88E3-A562CE46F52F",
+			"level" : "ADVANCED"
+		},
+		"modId" : "3",
+		"portalData" : {},
+		"recordId" : "188"
+	}
+]

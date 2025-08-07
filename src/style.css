@@ -164,3 +164,12 @@ button {
 .manual-group-footer .group-footer-buttons {
   padding: 8px;
 }
+
+/* Ensure sticky footer cells work properly with Tabulator */
+.manual-group-footer .tabulator-cell:first-child {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 15 !important;
+  background: #f5f5f5 !important;
+  border-right: 1px solid #ddd !important;
+}
