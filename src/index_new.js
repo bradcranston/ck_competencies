@@ -80,6 +80,7 @@ window.applyLevelFilter = function() {
 
 // Function to create the table
 function createTable(skills, contacts, scores) {
+  const container = document.getElementById('skills-table-container');
   const headerContainer = document.getElementById('contact-headers');
   const tableContainer = document.getElementById('skills-table');
   
@@ -140,20 +141,18 @@ function groupSkillsByArea(skills, contacts, scores) {
       );
       
       if (scoreEntry) {
-        const rawScore = scoreEntry.fieldData.Data; // Note: Data field, not Score
+        const rawScore = scoreEntry.fieldData.Score;
         const scoreValue = (rawScore === null || rawScore === undefined) ? "-" : rawScore;
-        const passValue = scoreEntry.fieldData.pass;
+        const passValue = scoreEntry.fieldData.Pass;
         const isPass = passValue === true || passValue === "true" || passValue === 1 || passValue === "1";
         
         skillData.scores[contactId] = {
           value: scoreValue,
           pass: isPass,
           metadata: {
-            author: scoreEntry.fieldData.user || scoreEntry.fieldData.zzCreatedAcct || '',
-            lastUpdated: scoreEntry.fieldData.date || '',
-            editableDate: formatDate(scoreEntry.fieldData.date || scoreEntry.fieldData.zzCreatedTimestamp || ''),
-            zzCreatedName: scoreEntry.fieldData.zzCreatedName || '',
-            zzCreatedTimestamp: scoreEntry.fieldData.zzCreatedTimestamp || ''
+            author: scoreEntry.fieldData.Author || '',
+            lastUpdated: scoreEntry.fieldData.LastUpdated || '',
+            editableDate: formatDate(scoreEntry.fieldData.EditableDate || scoreEntry.fieldData.LastUpdated || '')
           }
         };
       } else {
@@ -212,98 +211,20 @@ function createGroupSection(area, skills, contacts, container) {
     contentDiv.appendChild(rowDiv);
   });
   
-  // Create group footer with contact-specific notes buttons
+  // Create group footer with notes button
   const footerDiv = document.createElement('div');
   footerDiv.className = 'group-footer';
   
-  // Create the skill column area
-  const footerSkillArea = document.createElement('div');
-  footerSkillArea.className = 'footer-skill-area';
-  footerSkillArea.style.width = '400px';
-  footerSkillArea.style.minWidth = '400px';
-  footerSkillArea.style.maxWidth = '400px';
-  footerSkillArea.style.padding = '8px 12px';
-  footerSkillArea.style.borderRight = '1px solid #ddd';
-  footerSkillArea.style.background = '#f1f3f4';
-  footerSkillArea.style.position = 'sticky';
-  footerSkillArea.style.left = '0';
-  footerSkillArea.style.zIndex = '90';
-  footerSkillArea.style.display = 'flex';
-  footerSkillArea.style.alignItems = 'center';
-  footerSkillArea.style.boxSizing = 'border-box';
-  footerSkillArea.style.flexShrink = '0';
-  footerSkillArea.textContent = `${area} Summary`;
+  const footerText = document.createElement('span');
+  footerText.textContent = `${area} Summary`;
   
-  // Create the contact buttons area
-  const footerContactsArea = document.createElement('div');
-  footerContactsArea.className = 'footer-contacts-area';
-  footerContactsArea.style.display = 'flex';
-  footerContactsArea.style.flex = '1';
-  footerContactsArea.style.minWidth = '0';
+  const notesButton = document.createElement('button');
+  notesButton.className = 'notes-button';
+  notesButton.textContent = 'View/Add Notes';
+  notesButton.onclick = () => openNotesModal(area, 'group');
   
-  // Create notes buttons for each contact
-  contacts.forEach(contact => {
-    const contactName = contact.fieldData.contact;
-    const contactId = contact.fieldData.contact_id;
-    
-    const contactFooterDiv = document.createElement('div');
-    contactFooterDiv.style.width = '150px';
-    contactFooterDiv.style.minWidth = '150px';
-    contactFooterDiv.style.maxWidth = '150px';
-    contactFooterDiv.style.padding = '4px';
-    contactFooterDiv.style.borderRight = '1px solid #ddd';
-    contactFooterDiv.style.background = '#f1f3f4';
-    contactFooterDiv.style.display = 'flex';
-    contactFooterDiv.style.flexDirection = 'column';
-    contactFooterDiv.style.alignItems = 'center';
-    contactFooterDiv.style.gap = '3px';
-    contactFooterDiv.style.boxSizing = 'border-box';
-    contactFooterDiv.style.flexShrink = '0';
-    
-    // Add note button
-    const addNoteBtn = document.createElement('button');
-    addNoteBtn.textContent = 'Add Note';
-    addNoteBtn.title = `Add note for ${contactName}`;
-    addNoteBtn.style.fontSize = '10px';
-    addNoteBtn.style.padding = '4px 6px';
-    addNoteBtn.style.margin = '0';
-    addNoteBtn.style.whiteSpace = 'nowrap';
-    addNoteBtn.style.width = 'calc(100% - 4px)';
-    addNoteBtn.style.cursor = 'pointer';
-    addNoteBtn.style.border = '1px solid #007acc';
-    addNoteBtn.style.background = '#007acc';
-    addNoteBtn.style.color = 'white';
-    addNoteBtn.style.borderRadius = '4px';
-    addNoteBtn.style.fontWeight = '500';
-    addNoteBtn.style.transition = 'all 0.2s ease';
-    addNoteBtn.onclick = () => openNotesModal(area, 'add', contactName, contactId);
-    
-    // View notes button
-    const viewNotesBtn = document.createElement('button');
-    viewNotesBtn.textContent = 'View Notes';
-    viewNotesBtn.title = `View notes for ${contactName}`;
-    viewNotesBtn.style.fontSize = '10px';
-    viewNotesBtn.style.padding = '4px 6px';
-    viewNotesBtn.style.margin = '0';
-    viewNotesBtn.style.whiteSpace = 'nowrap';
-    viewNotesBtn.style.width = 'calc(100% - 4px)';
-    viewNotesBtn.style.cursor = 'pointer';
-    viewNotesBtn.style.border = '1px solid #666';
-    viewNotesBtn.style.background = '#f8f9fa';
-    viewNotesBtn.style.color = '#333';
-    viewNotesBtn.style.borderRadius = '4px';
-    viewNotesBtn.style.fontWeight = '500';
-    viewNotesBtn.style.transition = 'all 0.2s ease';
-    viewNotesBtn.onclick = () => openNotesModal(area, 'view', contactName, contactId);
-    
-    contactFooterDiv.appendChild(addNoteBtn);
-    contactFooterDiv.appendChild(viewNotesBtn);
-    footerContactsArea.appendChild(contactFooterDiv);
-  });
-  
-  // Assemble the footer
-  footerDiv.appendChild(footerSkillArea);
-  footerDiv.appendChild(footerContactsArea);
+  footerDiv.appendChild(footerText);
+  footerDiv.appendChild(notesButton);
   
   // Assemble the group
   groupDiv.appendChild(headerDiv);
@@ -456,123 +377,45 @@ window.saveScore = function() {
   const date = document.getElementById('scoreDate').value;
   const user = document.getElementById('scoreUser').value;
   
-  // Validate inputs
-  if (!date) {
-    alert('Please select a date.');
-    document.getElementById('scoreDate').focus();
-    return;
-  }
-  
-  if (!user.trim()) {
-    alert('Please enter a user name.');
-    document.getElementById('scoreUser').focus();
-    return;
-  }
-  
-  // Convert date to display format
-  let displayDate = date;
-  if (date) {
-    try {
-      const dateObj = new Date(date);
-      displayDate = dateObj.toLocaleDateString('en-US', {
-        month: '2-digit',
-        day: '2-digit', 
-        year: 'numeric'
-      });
-    } catch (e) {
-      displayDate = date;
-    }
-  }
-  
   console.log('Saving score:', { 
     skill: window.currentSkillId, 
     contact: window.currentScoreContactId, 
     score, 
     pass, 
-    date: displayDate, 
+    date, 
     user 
   });
   
-  // Create the same parameter structure as the original Tabulator version
-  const updateResult = {
-    "conId": window.currentScoreContactId,
-    "skillId": window.currentSkillId,
-    "value": score,
-    "pass": pass,
-    "mode": 'updateScore',
-    "user": user,
-    "date": displayDate,
-    "timestamp": new Date().toISOString()
-  };
-  
-  // Show saving indicator
-  const saveBtn = document.querySelector('#scoreModal .save-btn');
-  const originalText = saveBtn.textContent;
-  saveBtn.textContent = 'Saving...';
-  saveBtn.disabled = true;
-  saveBtn.style.opacity = '0.7';
-  
-  // Use the exact same FileMaker script call structure as the original
-  if (typeof runScript === 'function') {
-    runScript(JSON.stringify(updateResult));
-    console.log('Data sent to FileMaker successfully');
+  // Call FileMaker function to save the score
+  if (typeof window.FileMaker !== 'undefined' && window.FileMaker.PerformScript) {
+    const params = JSON.stringify({
+      skillId: window.currentSkillId,
+      contactId: window.currentScoreContactId,
+      score: score,
+      pass: pass,
+      date: date,
+      user: user
+    });
     
-    // Update the local data immediately for UI responsiveness
-    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate, user);
-    
-    // Show success briefly before closing
-    saveBtn.textContent = 'Saved ✓';
-    saveBtn.style.background = '#28a745';
-    setTimeout(() => {
-      closeScoreModal();
-      // Reset button state for next time
-      saveBtn.textContent = originalText;
-      saveBtn.disabled = false;
-      saveBtn.style.opacity = '1';
-      saveBtn.style.background = '';
-    }, 500);
-  } else if (typeof FileMaker !== 'undefined' && typeof FileMaker.PerformScriptWithOption === 'function') {
-    FileMaker.PerformScriptWithOption("Manage: Competencies", JSON.stringify(updateResult), 0);
-    console.log('Data sent to FileMaker successfully via PerformScriptWithOption');
-    
-    // Update the local data immediately for UI responsiveness
-    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate, user);
-    
-    // Show success briefly before closing
-    saveBtn.textContent = 'Saved ✓';
-    saveBtn.style.background = '#28a745';
-    setTimeout(() => {
-      closeScoreModal();
-      // Reset button state for next time
-      saveBtn.textContent = originalText;
-      saveBtn.disabled = false;
-      saveBtn.style.opacity = '1';
-      saveBtn.style.background = '';
-    }, 500);
+    window.FileMaker.PerformScript("UpdateScore", params);
   } else {
-    console.error('FileMaker runScript function not available');
-    
-    // Update the local data for testing without FileMaker
-    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate, user);
-    
-    alert('Score saved locally (FileMaker integration not available)');
-    
-    // Reset button state
-    saveBtn.textContent = originalText;
-    saveBtn.disabled = false;
-    saveBtn.style.opacity = '1';
-    
-    closeScoreModal();
+    console.log('FileMaker not available, would save:', {
+      skillId: window.currentSkillId,
+      contactId: window.currentScoreContactId,
+      score: score,
+      pass: pass,
+      date: date,
+      user: user
+    });
   }
+  
+  closeScoreModal();
 };
 
 // Notes Modal functions
-window.openNotesModal = function(groupOrSkillName, mode, contactName = '', contactId = '') {
-  console.log('openNotesModal called with:', { groupOrSkillName, mode, contactName, contactId });
-  
+window.openNotesModal = function(groupOrSkillName, mode, contactName = '') {
   window.currentGroupName = groupOrSkillName;
   window.currentContactName = contactName;
-  window.currentContactId = contactId; // Store contactId for compatibility
   window.currentMode = mode;
   
   if (mode === 'group') {
@@ -581,46 +424,25 @@ window.openNotesModal = function(groupOrSkillName, mode, contactName = '', conta
     document.getElementById('modalTitle').textContent = `${groupOrSkillName} - ${contactName} Notes`;
   }
   
-  // Load existing notes using the same structure as the original
-  window.loadExistingNotes(groupOrSkillName, contactId);
+  // Request notes from FileMaker
+  if (typeof window.FileMaker !== 'undefined' && window.FileMaker.PerformScript) {
+    const params = JSON.stringify({
+      groupName: groupOrSkillName,
+      contactName: contactName,
+      mode: mode
+    });
+    
+    window.FileMaker.PerformScript("GetNotes", params);
+  } else {
+    // For testing without FileMaker
+    window.displayNotes(JSON.stringify([
+      { note: "Sample note 1", author: "Test User", date: "2025-08-20" },
+      { note: "Sample note 2", author: "Another User", date: "2025-08-19" }
+    ]));
+  }
   
   // Show modal
   document.getElementById('notesModal').style.display = 'block';
-};
-
-window.loadExistingNotes = function(groupName, contactId) {
-  // Use the same parameter structure as the original Tabulator version
-  const result = {
-    "groupName": groupName,
-    "contactId": contactId,
-    "mode": 'loadNotes'
-  };
-  
-  console.log('Loading existing notes:', result);
-  
-  // Check if FileMaker runScript is available (same as original)
-  if (typeof runScript === 'function') {
-    runScript(JSON.stringify(result));
-  } else if (typeof FileMaker !== 'undefined' && typeof FileMaker.PerformScriptWithOption === 'function') {
-    FileMaker.PerformScriptWithOption("Manage: Competencies", JSON.stringify(result), 0);
-  } else {
-    console.log('FileMaker integration not available, showing sample notes');
-    // For testing without FileMaker - use the actual data structure
-    window.displayNotes(JSON.stringify([
-      { 
-        author: "Admin", 
-        noteId: "1", 
-        noteText: "Sample note 1 - This is a test note", 
-        timestamp: "2025-08-20 16:58:34" 
-      },
-      { 
-        author: "Test User", 
-        noteId: "2", 
-        noteText: "Sample note 2 - Another test note with more content", 
-        timestamp: "2025-08-19 14:30:15" 
-      }
-    ]));
-  }
 };
 
 window.closeNotesModal = function() {
@@ -632,8 +454,6 @@ window.closeNotesModal = function() {
 
 // Function to receive notes data from FileMaker
 window.displayNotes = function(notesData) {
-  console.log('displayNotes called with:', notesData);
-  
   const notes = JSON.parse(notesData);
   const noteDisplay = document.getElementById('noteDisplay');
   const noteTextarea = document.getElementById('noteTextarea');
@@ -644,37 +464,15 @@ window.displayNotes = function(notesData) {
   noteTextarea.style.display = 'block';
   saveBtn.style.display = 'inline-block';
   
-  // Display existing notes with the correct data structure
+  // Display existing notes
   if (notes && notes.length > 0) {
     let notesHtml = '<h4>Existing Notes:</h4>';
     notes.forEach(note => {
-      // Format the timestamp for display
-      let displayDate = note.timestamp || '';
-      if (displayDate) {
-        try {
-          // Handle the timestamp format "2025-08-20 04:58:34"
-          const date = new Date(displayDate.replace(' ', 'T')); // Convert to ISO format
-          if (!isNaN(date.getTime())) {
-            displayDate = date.toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: 'numeric'
-            }) + ' ' + date.toLocaleTimeString('en-US', {
-              hour: '2-digit',
-              minute: '2-digit'
-            });
-          }
-        } catch (e) {
-          // Keep original if parsing fails
-          console.log('Date parsing error:', e);
-        }
-      }
-      
       notesHtml += `<div style="margin-bottom: 10px; padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #007bff;">
                       <div style="font-size: 12px; color: #666; margin-bottom: 4px;">
-                        ${note.author || 'Unknown'} - ${displayDate}
+                        ${note.author} - ${formatDate(note.date)}
                       </div>
-                      <div>${note.noteText || note.note || ''}</div>
+                      <div>${note.note}</div>
                     </div>`;
     });
     noteDisplay.innerHTML = notesHtml;
@@ -691,79 +489,30 @@ window.saveNote = function() {
     return;
   }
   
-  // Use the exact same parameter structure as the original Tabulator version
-  const result = {
-    "groupName": window.currentGroupName,
-    "contactId": window.currentContactId,
-    "contactName": window.currentContactName,
-    "noteText": noteText,
-    "timestamp": new Date().toISOString(),
-    "author": window.currentUser || "Unknown User",
-    "mode": 'saveNote'
+  const noteData = {
+    groupName: window.currentGroupName,
+    contactName: window.currentContactName,
+    mode: window.currentMode,
+    note: noteText,
+    author: window.currentUser,
+    date: new Date().toISOString().split('T')[0]
   };
   
-  console.log('Saving note:', result);
+  console.log('Saving note:', noteData);
   
-  // Use the exact same FileMaker script call structure as the original
-  if (typeof runScript === 'function') {
-    runScript(JSON.stringify(result));
-  } else if (typeof FileMaker !== 'undefined' && typeof FileMaker.PerformScriptWithOption === 'function') {
-    FileMaker.PerformScriptWithOption("Manage: Competencies", JSON.stringify(result), 0);
+  // Call FileMaker function to save the note
+  if (typeof window.FileMaker !== 'undefined' && window.FileMaker.PerformScript) {
+    window.FileMaker.PerformScript("SaveNote", JSON.stringify(noteData));
   } else {
-    console.error('FileMaker runScript function not available');
-    alert('Note saved locally (FileMaker integration not available)');
+    console.log('FileMaker not available, would save note:', noteData);
   }
   
   // Clear the textarea
   document.getElementById('noteTextarea').value = '';
   
-  closeNotesModal();
+  // Refresh the notes display
+  openNotesModal(window.currentGroupName, window.currentMode, window.currentContactName);
 };
-
-// Function to update local score data and refresh display
-function updateLocalScoreData(contactId, skillId, scoreValue, passValue, displayDate, user) {
-  if (window.skillData && window.contactData && window.scoreData) {
-    // Update the score data
-    const scores = JSON.parse(window.scoreData);
-    let scoreEntry = scores.find(score => 
-      score.fieldData.Skill_ID === skillId && 
-      score.fieldData.Contact_ID === contactId
-    );
-    
-    if (scoreEntry) {
-      // Update existing entry
-      scoreEntry.fieldData.Data = scoreValue;
-      scoreEntry.fieldData.pass = passValue ? 1 : 0;
-      scoreEntry.fieldData.user = user;
-      scoreEntry.fieldData.date = displayDate;
-      scoreEntry.fieldData.zzCreatedTimestamp = new Date().toLocaleString('en-US');
-    } else {
-      // Create new entry
-      scoreEntry = {
-        fieldData: {
-          Skill_ID: skillId,
-          Contact_ID: contactId,
-          Data: scoreValue,
-          pass: passValue ? 1 : 0,
-          user: user,
-          date: displayDate,
-          zzCreatedAcct: user,
-          zzCreatedName: user,
-          zzCreatedTimestamp: new Date().toLocaleString('en-US')
-        }
-      };
-      scores.push(scoreEntry);
-    }
-    
-    // Update the global data
-    window.scoreData = JSON.stringify(scores);
-    
-    // Refresh the table display
-    window.refreshTable();
-    
-    console.log('Local score data updated and table refreshed');
-  }
-}
 
 // Function to refresh table data (called from FileMaker after updates)
 window.refreshTable = function() {
@@ -772,55 +521,6 @@ window.refreshTable = function() {
     const contacts = JSON.parse(window.contactData);
     const scores = JSON.parse(window.scoreData);
     createTable(skills, contacts, scores);
-  }
-};
-
-// FileMaker integration function (same as original)
-runScript = function (param) {
-  FileMaker.PerformScriptWithOption("Manage: Competencies", param, 0);
-};
-
-// Function to update pass checkbox from FileMaker (if needed)
-window.updatePassCheckbox = function(contactId, skillId, passValue) {
-  console.log('updatePassCheckbox called:', { contactId, skillId, passValue });
-  // Update the table data and refresh the display
-  if (window.skillData && window.contactData && window.scoreData) {
-    // Update the score data
-    const scores = JSON.parse(window.scoreData);
-    const scoreEntry = scores.find(score => 
-      score.fieldData.Skill_ID === skillId && 
-      score.fieldData.Contact_ID === contactId
-    );
-    
-    if (scoreEntry) {
-      scoreEntry.fieldData.pass = passValue; // Note: lowercase 'pass'
-      window.scoreData = JSON.stringify(scores);
-      
-      // Refresh the table
-      window.refreshTable();
-    }
-  }
-};
-
-// Function to update score from FileMaker (if needed)
-window.updateScore = function(contactId, skillId, scoreValue) {
-  console.log('updateScore called:', { contactId, skillId, scoreValue });
-  // Update the table data and refresh the display
-  if (window.skillData && window.contactData && window.scoreData) {
-    // Update the score data
-    const scores = JSON.parse(window.scoreData);
-    const scoreEntry = scores.find(score => 
-      score.fieldData.Skill_ID === skillId && 
-      score.fieldData.Contact_ID === contactId
-    );
-    
-    if (scoreEntry) {
-      scoreEntry.fieldData.Data = scoreValue; // Note: 'Data' field, not 'Score'
-      window.scoreData = JSON.stringify(scores);
-      
-      // Refresh the table
-      window.refreshTable();
-    }
   }
 };
 
@@ -897,26 +597,11 @@ window.testTable = function() {
       fieldData: {
         Skill_ID: "skill1",
         Contact_ID: "contact1",
-        Data: "2", // Note: Data field, not Score
-        pass: 1, // Note: lowercase pass, numeric value
-        user: "Test User",
-        date: "08/20/2025",
-        zzCreatedAcct: "Admin",
-        zzCreatedName: "Bradley Cranston",
-        zzCreatedTimestamp: "08/20/2025 16:41:59"
-      }
-    },
-    {
-      fieldData: {
-        Skill_ID: "skill2",
-        Contact_ID: "contact2", 
-        Data: "3",
-        pass: 1,
-        user: "Test User",
-        date: "08/19/2025",
-        zzCreatedAcct: "Admin",
-        zzCreatedName: "Bradley Cranston",
-        zzCreatedTimestamp: "08/19/2025 10:30:00"
+        Score: "2",
+        Pass: true,
+        Author: "Test User",
+        LastUpdated: "2025-08-20",
+        EditableDate: "2025-08-20"
       }
     }
   ]);

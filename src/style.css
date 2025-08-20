@@ -16,7 +16,9 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow: auto;
+  overflow: hidden; /* Prevent body scroll, let table handle scrolling */
+  display: flex;
+  flex-direction: column;
 }
 
 p{
@@ -53,18 +55,345 @@ button {
   color: #fff;
 }
 
-/* Footer button styles */
-.manual-group-footer button:hover {
+/* Custom Table Styles */
+#skills-table-container {
+  width: 100%;
+  height: calc(100vh - 120px); /* Full viewport height minus space for filters and margins */
+  min-height: 400px; /* Minimum height to ensure usability */
+  max-height: calc(100vh - 60px); /* Don't exceed viewport with some buffer */
+  overflow: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex: 1; /* Take up remaining space in flex container */
+}
+
+/* Main content wrapper for better layout control */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Allow shrinking */
+}
+
+/* Level filter container adjustments */
+#level-filter-container {
+  flex-shrink: 0; /* Don't shrink the filter area */
+}
+
+.table-header {
+  display: flex;
+  background: #f8f9fa;
+  border-bottom: 2px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-skill {
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  padding: 12px;
+  font-weight: bold;
+  border-right: 1px solid #ddd;
+  background: #f8f9fa;
+  position: sticky;
+  left: 0;
+  z-index: 101;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.contact-headers {
+  display: flex;
+  flex: 1;
+  min-width: 0; /* Allow shrinking */
+}
+
+.contact-header {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  padding: 12px;
+  font-weight: bold;
+  border-right: 1px solid #ddd;
+  text-align: center;
+  background: #f8f9fa;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.skills-table {
+  width: 100%;
+}
+
+.group-section {
+  width: 100%;
+}
+
+.group-header {
+  background: #e9ecef;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  left: 0;
+  z-index: 90;
+}
+
+.group-toggle {
+  margin-right: 8px;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6c757d;
+  color: white;
+  border-radius: 2px;
+}
+
+.group-content {
+  width: 100%;
+}
+
+.skill-row {
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.skill-cell {
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #ddd;
+  position: sticky;
+  left: 0;
+  z-index: 50;
+  background: white;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.score-cells {
+  display: flex;
+  flex: 1;
+  min-width: 0; /* Allow shrinking */
+}
+
+.score-cell {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  padding: 4px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  min-height: 60px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.score-cell:hover {
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.score-value {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.score-metadata {
+  font-size: 9px;
+  opacity: 0.8;
+  margin-top: 2px;
+  line-height: 1;
+  text-align: center;
+}
+
+.pass-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #28a745;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.group-footer {
+  background: #f1f3f4;
+  border-bottom: 2px solid #ddd;
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+}
+
+.notes-button {
+  background: #17a2b8;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.notes-button:hover {
+  background: #138496;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.manual-group-footer button:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+.collapsed .group-content {
+  display: none;
 }
 
-/* Modal styles */
+.collapsed .group-toggle::before {
+  content: '+';
+}
+
+.group-toggle::before {
+  content: '-';
+}
+
+/* Level-specific styling */
+.level-beginning {
+  background-color: #e8f5e8;
+  color: #2d5a2d;
+}
+
+.level-developing {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.level-proficient {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.level-advanced {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-skill, .skill-cell {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+  }
+  
+  .contact-header, .score-cell {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+  }
+  
+  #skills-table-container {
+    height: calc(100vh - 140px); /* More space for mobile filters */
+  }
+}
+
+@media (max-height: 600px) {
+  /* For shorter screens, adjust minimum height */
+  #skills-table-container {
+    min-height: 300px;
+  }
+}
+
+@media (min-height: 900px) {
+  /* For taller screens, use more space */
+  #skills-table-container {
+    height: calc(100vh - 100px);
+  }
+}
+
+/* Fix any remaining Tabulator references */
+.manual-group-footer {
+  display: none;
+}
+
+.tabulator-row, .tabulator-cell, .tabulator-group, .tabulator-group-toggle {
+  display: none;
+}
+.tabulator-table {
+  border-spacing: 0 !important;
+  border-collapse: collapse !important;
+}
+
+.tabulator-tableHolder {
+  border-spacing: 0 !important;
+}
+
+/* Remove any extra spacing in the table body */
+.tabulator-tableholder {
+  border-spacing: 0 !important;
+}
+
+/* Ensure no extra spacing between table elements */
+.tabulator-row + .tabulator-row {
+  margin-top: 0 !important;
+}
+
+/* Remove any default spacing from the table structure */
+.tabulator-table .tabulator-row {
+  border-spacing: 0 !important;
+  line-height: 1 !important;
+}
+
+/* Target the specific gray space issue */
+.tabulator-row::after {
+  display: none !important;
+}
+
+.tabulator-row::before {
+  display: none !important;
+}
+
+/* Style for editable date elements */
+.editable-date {
+  cursor: pointer;
+  text-decoration: underline;
+  transition: background-color 0.2s;
+}
+
+.editable-date:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+/* Ensure metadata text is readable */
+.score-metadata {
+  font-size: 9px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Make modal more mobile-friendly */
 .modal {
   display: none;
   position: fixed;
@@ -172,4 +501,130 @@ button {
   z-index: 15 !important;
   background: #f5f5f5 !important;
   border-right: 1px solid #ddd !important;
+}
+
+/* Score Modal Styles */
+.score-modal-body {
+  padding: 20px 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group label[for="passCheckbox"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+
+.form-group label[for="passCheckbox"]:hover {
+  background: #e9ecef;
+  border-color: #007bff;
+}
+
+.score-select, .score-date, .score-user {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.score-select:focus, .score-date:focus, .score-user:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.score-user {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+#passCheckbox {
+  transform: scale(1.3);
+  margin: 0;
+}
+
+/* Force contact header columns to maintain fixed width */
+.tabulator-col-group {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  overflow: hidden !important;
+}
+
+.tabulator-col-group .tabulator-col-group-cols {
+  width: 150px !important;
+}
+
+.tabulator-col-group .tabulator-col-title {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 100% !important;
+  max-width: 150px !important;
+}
+
+/* Enhanced modal appearance */
+#scoreModal .modal-content {
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#scoreModal .modal-header {
+  border-radius: 12px 12px 0 0;
+  transition: all 0.3s ease;
+  padding: 20px 24px;
+}
+
+#scoreModal .modal-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+#scoreModal .modal-buttons {
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+#scoreModal .save-btn {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#scoreModal .save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }

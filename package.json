@@ -18,10 +18,13 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
+    "@parcel/optimizer-cssnano": "^2.15.4",
+    "@parcel/optimizer-htmlnano": "^2.15.4",
+    "@parcel/optimizer-terser": "^2.15.4",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "open": "^8.2.1",
-    "parcel": "^2.8.1",
+    "parcel": "^2.15.4",
     "prettier": "2.6.2"
   }
 }
