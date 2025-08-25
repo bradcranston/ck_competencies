@@ -3,6 +3,7 @@ window.skillData = null;
 window.contactData = null;
 window.scoreData = null;
 window.currentUser = "Current User";
+window.currentDate = "Current Date";
 window.selectedLevels = ['BEGINNING', 'DEVELOPING', 'PROFICIENT', 'ADVANCED'];
 
 // Global variables for modal state
@@ -18,7 +19,7 @@ window.currentScoreContactId = '';
 window.currentScoreContactName = '';
 
 // Main function called from FileMaker to load the table
-window.loadTable = (skillData, contactData, scoreData, user) => {
+window.loadTable = (skillData, contactData, scoreData, user, date) => {
   console.log('loadTable called with user:', user);
   
   // Store data globally
@@ -26,7 +27,8 @@ window.loadTable = (skillData, contactData, scoreData, user) => {
   window.contactData = contactData;
   window.scoreData = scoreData;
   window.currentUser = user || "Current User";
-  
+  window.currentDate = date || "Current Date";
+
   console.log('window.currentUser set to:', window.currentUser);
   
   // Parse the data
@@ -518,7 +520,7 @@ window.saveScore = function() {
     console.log('Data sent to FileMaker successfully');
     
     // Update the local data immediately for UI responsiveness
-    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate, user);
+    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate);
     
     // Show success briefly before closing
     saveBtn.textContent = 'Saved ✓';
@@ -536,7 +538,7 @@ window.saveScore = function() {
     console.log('Data sent to FileMaker successfully via PerformScriptWithOption');
     
     // Update the local data immediately for UI responsiveness
-    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate, user);
+    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate);
     
     // Show success briefly before closing
     saveBtn.textContent = 'Saved ✓';
@@ -553,7 +555,7 @@ window.saveScore = function() {
     console.error('FileMaker runScript function not available');
     
     // Update the local data for testing without FileMaker
-    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate, user);
+    updateLocalScoreData(window.currentScoreContactId, window.currentSkillId, score, pass, displayDate);
     
     alert('Score saved locally (FileMaker integration not available)');
     
@@ -721,7 +723,7 @@ window.saveNote = function() {
 };
 
 // Function to update local score data and refresh display
-function updateLocalScoreData(contactId, skillId, scoreValue, passValue, displayDate, user) {
+function updateLocalScoreData(contactId, skillId, scoreValue, passValue, displayDate) {
   if (window.skillData && window.contactData && window.scoreData) {
     // Update the score data
     const scores = JSON.parse(window.scoreData);
@@ -730,13 +732,17 @@ function updateLocalScoreData(contactId, skillId, scoreValue, passValue, display
       score.fieldData.Contact_ID === contactId
     );
     
+    // Use window.currentUser instead of any user input for consistency
+    const actualUser = window.currentUser || "Current User";
+    
     if (scoreEntry) {
       // Update existing entry
       scoreEntry.fieldData.Data = scoreValue;
       scoreEntry.fieldData.pass = passValue ? 1 : 0;
-      scoreEntry.fieldData.user = user;
+      scoreEntry.fieldData.user = actualUser; // Use window.currentUser
       scoreEntry.fieldData.date = displayDate;
       scoreEntry.fieldData.zzCreatedTimestamp = new Date().toLocaleString('en-US');
+      scoreEntry.fieldData.zzCreatedAcct = actualUser; // Also update created account
     } else {
       // Create new entry
       scoreEntry = {
@@ -745,10 +751,10 @@ function updateLocalScoreData(contactId, skillId, scoreValue, passValue, display
           Contact_ID: contactId,
           Data: scoreValue,
           pass: passValue ? 1 : 0,
-          user: user,
+          user: actualUser, // Use window.currentUser
           date: displayDate,
-          zzCreatedAcct: user,
-          zzCreatedName: user,
+          zzCreatedAcct: actualUser, // Use window.currentUser
+          zzCreatedName: actualUser, // Use window.currentUser
           zzCreatedTimestamp: new Date().toLocaleString('en-US')
         }
       };
@@ -761,7 +767,7 @@ function updateLocalScoreData(contactId, skillId, scoreValue, passValue, display
     // Refresh the table display
     window.refreshTable();
     
-    console.log('Local score data updated and table refreshed');
+    console.log('Local score data updated with window.currentUser:', actualUser);
   }
 }
 
