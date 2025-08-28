@@ -428,21 +428,54 @@ window.openScoreModal = function(skillName, contactName, skillId, contactId, cur
   // Set modal title
   document.getElementById('scoreModalTitle').textContent = `Edit Score - ${skillName} - ${contactName}`;
   
-  // Set current values
-  document.getElementById('scoreSelect').value = currentScore || '-';
-  document.getElementById('passCheckbox').checked = passValue === true || passValue === "true" || passValue === 1 || passValue === "1";
-  
-  // Set metadata if available
-  if (metadata) {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('scoreDate').value = metadata.editableDate ? new Date(metadata.editableDate).toISOString().split('T')[0] : today;
-    document.getElementById('scoreUser').value = metadata.author || window.currentUser;
+  // Handle previous data display
+  const previousDataSection = document.getElementById('previousDataSection');
+  if (metadata && currentScore !== "-") {
+    // Show previous data section
+    previousDataSection.style.display = 'block';
+    document.getElementById('previousScoreValue').textContent = currentScore || '-';
+    document.getElementById('previousPassValue').textContent = (passValue === true || passValue === "true" || passValue === 1 || passValue === "1") ? 'Yes' : 'No';
+    document.getElementById('previousUserValue').textContent = metadata.author || '-';
+    document.getElementById('previousDateValue').textContent = metadata.editableDate || '-';
   } else {
-    // Set defaults for new entries
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('scoreDate').value = today;
-    document.getElementById('scoreUser').value = window.currentUser;
+    // Hide previous data section if no previous entry
+    previousDataSection.style.display = 'none';
   }
+  
+  // Set new entry defaults - always start fresh
+  document.getElementById('scoreSelect').value = '-'; // Always start with no selection
+  document.getElementById('passCheckbox').checked = false; // Always start unchecked
+  
+  // Use window.currentDate as the default date
+  let defaultDate;
+  if (window.currentDate && window.currentDate !== "Current Date") {
+    // Parse the currentDate and convert to input format
+    try {
+      if (window.currentDate.includes('/')) {
+        // Handle MM/DD/YYYY format
+        const parts = window.currentDate.split('/');
+        if (parts.length === 3) {
+          const month = parts[0].padStart(2, '0');
+          const day = parts[1].padStart(2, '0');
+          const year = parts[2];
+          defaultDate = `${year}-${month}-${day}`;
+        } else {
+          defaultDate = new Date().toISOString().split('T')[0];
+        }
+      } else {
+        // Try to parse as-is
+        const date = new Date(window.currentDate);
+        defaultDate = isNaN(date.getTime()) ? new Date().toISOString().split('T')[0] : date.toISOString().split('T')[0];
+      }
+    } catch (e) {
+      defaultDate = new Date().toISOString().split('T')[0];
+    }
+  } else {
+    defaultDate = new Date().toISOString().split('T')[0];
+  }
+  
+  document.getElementById('scoreDate').value = defaultDate;
+  document.getElementById('scoreUser').value = window.currentUser;
   
   // Show modal
   document.getElementById('scoreModal').style.display = 'block';
@@ -927,5 +960,5 @@ window.testTable = function() {
     }
   ]);
   
-  loadTable(sampleSkillData, sampleContactData, sampleScoreData, "Test User");
+  loadTable(sampleSkillData, sampleContactData, sampleScoreData, "Test User", "08/25/2025");
 };

@@ -72,28 +72,51 @@
           <h2 id="scoreModalTitle">Edit Score</h2>
         </div>
         <div class="score-modal-body">
-          <div class="form-group">
-            <label for="scoreSelect">Score:</label>
-            <select id="scoreSelect" class="score-select">
-              <option value="-">-</option>
-              <option value="N">N</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
+          <!-- Previous Data Section -->
+          <div id="previousDataSection" class="previous-data-section" style="display: none;">
+            <h3 style="margin: 0 0 10px 0; color: #666; font-size: 16px;">Previous Entry:</h3>
+            <div class="previous-data-content" style="background: #f8f9fa; padding: 12px; border-radius: 4px; border-left: 4px solid #007bff; margin-bottom: 20px;">
+              <div id="previousScore" class="previous-item">
+                <strong>Score:</strong> <span id="previousScoreValue">-</span>
+              </div>
+              <div id="previousPass" class="previous-item">
+                <strong>Pass:</strong> <span id="previousPassValue">No</span>
+              </div>
+              <div id="previousUser" class="previous-item">
+                <strong>User:</strong> <span id="previousUserValue">-</span>
+              </div>
+              <div id="previousDate" class="previous-item">
+                <strong>Date:</strong> <span id="previousDateValue">-</span>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="passCheckbox">
-              <input type="checkbox" id="passCheckbox"> Pass
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="scoreDate">Date:</label>
-            <input type="date" id="scoreDate" class="score-date">
-          </div>
-          <div class="form-group">
-            <label for="scoreUser">User:</label>
-            <input type="text" id="scoreUser" class="score-user">
+          
+          <!-- New Entry Section -->
+          <div class="new-entry-section">
+            <h3 style="margin: 0 0 15px 0; color: #333; font-size: 16px;">New Entry:</h3>
+            <div class="form-group">
+              <label for="scoreSelect">Score:</label>
+              <select id="scoreSelect" class="score-select">
+                <option value="-">-</option>
+                <option value="N">N</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="passCheckbox">
+                <input type="checkbox" id="passCheckbox"> Pass
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="scoreDate">Date:</label>
+              <input type="date" id="scoreDate" class="score-date">
+            </div>
+            <div class="form-group">
+              <label for="scoreUser">User:</label>
+              <input type="text" id="scoreUser" class="score-user">
+            </div>
           </div>
         </div>
         <div class="modal-buttons">
